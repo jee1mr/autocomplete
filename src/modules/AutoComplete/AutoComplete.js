@@ -89,6 +89,8 @@ class AutoComplete extends Component {
         {(showSuggestions && value && suggestionList && suggestionList.length && (
           <div className="autoc-dropdown">
             {suggestionList.slice(0, limit).map((suggestion, index) => (
+              // PROD TODO: instead of defining custom onClick function for each item,
+              // convert this into an Item PureComponent and pass just the handler function
               <div className="item" key={index} onClick={() => this.handleSelect(suggestion)}>
                 <Highlighter text={suggestion} matchText={value} />
               </div>
