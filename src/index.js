@@ -5,9 +5,8 @@ import ReactDOM from 'react-dom';
 
 // App Imports
 import App from './App';
-import 'setup/mock';
 
-// Setup API Base URL
-// axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL
+// Initialize mock API
+import 'setup/mock';
 
 ReactDOM.render(<App />, document.getElementById('root'));

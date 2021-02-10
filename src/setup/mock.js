@@ -1,5 +1,6 @@
 import { createServer, Model } from 'miragejs';
 
+// Mock API
 createServer({
   models: {
     user: Model,
@@ -7,10 +8,12 @@ createServer({
   routes() {
     this.namespace = 'api';
 
+    // No query, return blank
     this.get('/users/', () => {
       return [];
     });
 
+    // Filter by query
     this.get('/users/:query', (schema, request) => {
       let query = request.params.query;
 

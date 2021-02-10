@@ -83,13 +83,14 @@ class AutoComplete extends Component {
           type="text"
           onChange={this.handleChange}
           value={value}
-          autoComplete="off"></input>
+          autoComplete="off"
+        />
         {/* Suggestion List */}
         {(showSuggestions && value && suggestionList && suggestionList.length && (
           <div className="autoc-dropdown">
             {suggestionList.slice(0, limit).map((suggestion, index) => (
               <div className="item" key={index} onClick={() => this.handleSelect(suggestion)}>
-                <Highlighter text={suggestion} matchText={value}></Highlighter>
+                <Highlighter text={suggestion} matchText={value} />
               </div>
             ))}
           </div>

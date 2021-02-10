@@ -64,14 +64,14 @@ const AutoCompleteFC = ({ suggestionList, onChange, onSelect, limit }) => {
         type="text"
         onChange={handleChange}
         value={value}
-        autoComplete="off"></input>
-
+        autoComplete="off"
+      />
       {/* Suggestion List */}
       {(showSuggestions && value && suggestionList && suggestionList.length && (
         <div className="autoc-dropdown">
           {suggestionList.slice(0, limit).map((suggestion, index) => (
             <div className="item" key={index} onClick={() => handleSelect(suggestion)}>
-              <Highlighter text={suggestion} matchText={value}></Highlighter>
+              <Highlighter text={suggestion} matchText={value} />
             </div>
           ))}
         </div>
