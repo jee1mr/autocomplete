@@ -8,16 +8,12 @@ import './style.css';
 
 // Component
 export default class App extends Component {
-  // Constructor
-  constructor(props) {
-    super(props);
-  }
-
   // Render
   render() {
     return (
       <div className="container">
         <ClassBased />
+        <h3>Function Based Component:</h3>
         <FunctionBased />
       </div>
     );
