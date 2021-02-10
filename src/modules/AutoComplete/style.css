@@ -1,0 +1,16 @@
+.autoc-container {
+    width: 150px;
+}
+
+.autoc-dropdown {
+    width: 100%;
+    border: 1px solid;
+}
+
+.autoc-dropdown .item {
+    padding: 5px 0px 5px 10px;
+}
+
+.autoc-dropdown .item:hover {
+    background: #eaf2f4;
+}
