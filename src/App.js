@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 
 // App Imports
-import AutoCompleteFC from 'modules/AutoComplete/AutoCompleteFC'
+import AutoComplete from 'modules/AutoComplete/AutoCompleteFC'
 import { filterUsers } from './modules/AutoComplete/api/index'
 
 // Component
@@ -44,7 +44,7 @@ export default class App extends Component {
       <div>
         <p>You have selected: {this.state.selected ? this.state.selected : 'None'}</p>
         <div>Select a name:</div>
-        <AutoCompleteFC
+        <AutoComplete
           suggestionList={this.state.suggestionList}
           onSelect={this.handleSelect}
           onChange={this.filterSuggestions}
