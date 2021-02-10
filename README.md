@@ -20,10 +20,12 @@ You will also see any lint errors in the console.
   - Very basic css handling hover and custom autcomplete ui
 - [x] You need to handle all non-standard/edge use-cases - it should have a perfect user-experience.
   - Hides the dropdown when clicked outside
-  - Highlights the text
+  - Highlights the text on hover
   - Appropriate Cursor pointer
   - When you clear the text, the selection resets to None
+  - Case insensitive searching
 - [x] Bonus points if you highlight the matching part of the text and not only showing it.
+  - Hightlights the matched text with a different colour
 - [x] Prefer using plain JS, not TS
 - [x] No external state management libraries (refer to #1 as well), only native React method.
 - [x] Use only class components, feel free to use life-cycle methods if you need.

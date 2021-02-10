@@ -10,7 +10,7 @@ export class Highlighter extends Component {
   // Render
   render() {
     const { text, matchText } = this.props;
-    const matchIndex = text.indexOf(matchText);
+    const matchIndex = text.toLowerCase().indexOf(matchText.toLowerCase());
 
     // No match
     if (matchIndex === -1) {
