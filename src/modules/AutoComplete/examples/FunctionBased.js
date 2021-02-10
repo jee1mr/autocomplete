@@ -44,7 +44,7 @@ class FunctionBased extends Component {
       <div>
         <h3>Function Based Component</h3>
         <p>You have selected: {this.state.selected ? this.state.selected : 'None'}</p>
-        <div>Start typing...:</div>
+        <div>Start typing...</div>
         <AutoCompleteFC
           suggestionList={this.state.suggestionList}
           onSelect={this.handleSelect}

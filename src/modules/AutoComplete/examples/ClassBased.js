@@ -44,7 +44,7 @@ class ClassBased extends Component {
       <div>
         <h3>Class Based Component</h3>
         <p>You have selected: {this.state.selected ? this.state.selected : 'None'}</p>
-        <div>Start typing...:</div>
+        <div>Start typing...</div>
         <AutoComplete
           suggestionList={this.state.suggestionList}
           onSelect={this.handleSelect}
