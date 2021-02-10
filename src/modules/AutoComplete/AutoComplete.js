@@ -1,67 +1,93 @@
 // Imports
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 // App Imports
-import './style.css'
+import './style.css';
 
 class AutoComplete extends Component {
   // Constructor
   constructor(props) {
-    super(props)
+    super(props);
     // Initial State
     this.state = {
       value: '',
       showSuggestions: true,
-    }
+    };
+    // Refs
+    this.containerRef = React.createRef();
   }
+
+  // on mount
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOutside, false);
+  }
+
+  // on unmount
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside, false);
+  }
+
+  // Handle click outside
+  handleClickOutside = (event) => {
+    if (this.containerRef && !this.containerRef.current.contains(event.target)) {
+      this.setState({
+        showSuggestions: false,
+      });
+    }
+  };
 
   // Handle select suggested text
   handleSelect = (val) => {
     this.setState({
       value: val,
       showSuggestions: false,
-    })
+    });
+
     // Callback
     if (this.props.onSelect) {
-      this.props.onSelect(val)
+      this.props.onSelect(val);
     }
-  }
+  };
 
   // Handle change in value
   handleChange = (e) => {
     this.setState({
       value: e.target.value,
       showSuggestions: true,
-    })
+    });
+
     // Callback
     if (this.props.onChange) {
-      this.props.onChange(e.target.value)
+      this.props.onChange(e.target.value);
     }
+
     // When all the text is cleared
     if (!e.target.value) {
-      this.handleSelect('')
+      this.handleSelect('');
     }
-  }
+  };
 
   // Render
   render() {
+    const { showSuggestions, value } = this.state;
+    const { suggestionList, limit } = this.props;
+
     return (
-      <div className="autoc-container">
+      <div className="autoc-container" ref={this.containerRef}>
         {/* Input Box */}
         <input
           id="autoc-val"
           className="autoc-input"
           type="text"
-          onChange={handleChange}
+          onChange={this.handleChange}
           value={value}
           autoComplete="off"></input>
-
         {/* Suggestion List */}
         {(showSuggestions && value && suggestionList && suggestionList.length && (
           <div className="autoc-dropdown">
             {suggestionList.slice(0, limit).map((suggestion, index) => (
-              <div className="item" key={index} onClick={() => handleSelect(suggestion)}>
+              <div className="item" key={index} onClick={() => this.handleSelect(suggestion)}>
                 {suggestion}
               </div>
             ))}
@@ -69,7 +95,7 @@ class AutoComplete extends Component {
         )) ||
           null}
       </div>
-    )
+    );
   }
 }
 
@@ -79,11 +105,11 @@ AutoComplete.propTypes = {
   onChange: PropTypes.func,
   onSelect: PropTypes.func,
   limit: PropTypes.number,
-}
+};
 
 // Default Props
 AutoComplete.defaultProps = {
   limit: 10,
-}
+};
 
-export default AutoComplete
+export default AutoComplete;

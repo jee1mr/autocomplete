@@ -1,37 +1,37 @@
 // Imports
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 // App Imports
-import './style.css'
+import './style.css';
 
 // Component
 const AutoCompleteFC = ({ suggestionList, onChange, onSelect, limit }) => {
   // State
-  const [value, setValue] = useState('')
-  const [showSuggestions, setShowSuggestions] = useState(true)
+  const [value, setValue] = useState('');
+  const [showSuggestions, setShowSuggestions] = useState(true);
 
   // Handle select suggested text
   const handleSelect = (val) => {
-    setValue(val)
-    setShowSuggestions(false)
+    setValue(val);
+    setShowSuggestions(false);
     if (onSelect) {
-      onSelect(val)
+      onSelect(val);
     }
-  }
+  };
 
   // Handle change in value
   const handleChange = (e) => {
-    setValue(e.target.value)
-    setShowSuggestions(true)
+    setValue(e.target.value);
+    setShowSuggestions(true);
     if (onChange) {
-      onChange(e.target.value)
+      onChange(e.target.value);
     }
     // When all the text is cleared
     if (!e.target.value) {
-      handleSelect('')
+      handleSelect('');
     }
-  }
+  };
 
   return (
     <div className="autoc-container">
@@ -56,8 +56,8 @@ const AutoCompleteFC = ({ suggestionList, onChange, onSelect, limit }) => {
       )) ||
         null}
     </div>
-  )
-}
+  );
+};
 
 // Property Types
 AutoCompleteFC.propTypes = {
@@ -65,11 +65,11 @@ AutoCompleteFC.propTypes = {
   onChange: PropTypes.func,
   onSelect: PropTypes.func,
   limit: PropTypes.number,
-}
+};
 
 // Default Props
 AutoCompleteFC.defaultProps = {
   limit: 10,
-}
+};
 
-export default AutoCompleteFC
+export default AutoCompleteFC;

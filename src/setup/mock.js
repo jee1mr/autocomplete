@@ -1,18 +1,18 @@
-import { createServer, Model } from 'miragejs'
+import { createServer, Model } from 'miragejs';
 
 createServer({
   models: {
     user: Model,
   },
   routes() {
-    this.namespace = 'api'
+    this.namespace = 'api';
 
     this.get('/users/', () => {
-      return []
-    })
+      return [];
+    });
 
     this.get('/users/:query', (schema, request) => {
-      let query = request.params.query
+      let query = request.params.query;
 
       const users = [
         {
@@ -411,9 +411,9 @@ createServer({
           id: '99',
           name: 'Luigi',
         },
-      ]
+      ];
 
-      return users.filter((user) => user.name.toLowerCase().indexOf(query.toLowerCase()) > -1)
-    })
+      return users.filter((user) => user.name.toLowerCase().indexOf(query.toLowerCase()) > -1);
+    });
   },
-})
+});
