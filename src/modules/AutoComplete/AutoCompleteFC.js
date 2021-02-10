@@ -1,5 +1,5 @@
 // Imports
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 // App Imports
@@ -10,6 +10,27 @@ const AutoCompleteFC = ({ suggestionList, onChange, onSelect, limit }) => {
   // State
   const [value, setValue] = useState('');
   const [showSuggestions, setShowSuggestions] = useState(true);
+
+  // Refs
+  const containerRef = useRef();
+
+  // On Mount
+  useEffect(() => {
+    // Handle click outside
+    function handleClickOutside(event) {
+      if (containerRef && !containerRef.current.contains(event.target)) {
+        setShowSuggestions(false); // Hide suggestions when clicked outside
+      }
+    }
+
+    // Add event listener
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      // Cleanup
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [containerRef]);
 
   // Handle select suggested text
   const handleSelect = (val) => {
@@ -34,7 +55,7 @@ const AutoCompleteFC = ({ suggestionList, onChange, onSelect, limit }) => {
   };
 
   return (
-    <div className="autoc-container">
+    <div className="autoc-container" ref={containerRef}>
       {/* Input Box */}
       <input
         id="autofc-val"

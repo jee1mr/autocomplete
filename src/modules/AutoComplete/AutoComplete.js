@@ -32,7 +32,7 @@ class AutoComplete extends Component {
   handleClickOutside = (event) => {
     if (this.containerRef && !this.containerRef.current.contains(event.target)) {
       this.setState({
-        showSuggestions: false,
+        showSuggestions: false, // Hide suggestions when clicked outside
       });
     }
   };
