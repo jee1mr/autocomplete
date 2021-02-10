@@ -6,4 +6,8 @@
 
 .container > div {
     margin: 3rem;
-  }
+}
+
+body {
+    font-family: sans-serif;
+}
