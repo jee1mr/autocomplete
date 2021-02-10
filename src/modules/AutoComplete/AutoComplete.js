@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 // App Imports
+import Highlighter from 'modules/Highlighter';
 import './style.css';
 
 class AutoComplete extends Component {
@@ -88,7 +89,7 @@ class AutoComplete extends Component {
           <div className="autoc-dropdown">
             {suggestionList.slice(0, limit).map((suggestion, index) => (
               <div className="item" key={index} onClick={() => this.handleSelect(suggestion)}>
-                {suggestion}
+                <Highlighter text={suggestion} matchText={value}></Highlighter>
               </div>
             ))}
           </div>

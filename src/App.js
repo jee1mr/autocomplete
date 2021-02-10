@@ -13,7 +13,6 @@ export default class App extends Component {
     return (
       <div className="container">
         <ClassBased />
-        <h3>Function Based Component:</h3>
         <FunctionBased />
       </div>
     );

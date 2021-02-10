@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 // App Imports
+import Highlighter from 'modules/Highlighter';
 import './style.css';
 
 // Component
@@ -70,7 +71,7 @@ const AutoCompleteFC = ({ suggestionList, onChange, onSelect, limit }) => {
         <div className="autoc-dropdown">
           {suggestionList.slice(0, limit).map((suggestion, index) => (
             <div className="item" key={index} onClick={() => handleSelect(suggestion)}>
-              {suggestion}
+              <Highlighter text={suggestion} matchText={value}></Highlighter>
             </div>
           ))}
         </div>
